@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>pyscript test</title>
+  <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/pyscript.css" />
+  <script defer src="https://pyscript.net/releases/2024.1.1/pyscript.js"></script>
+  <style>
+    body { margin:0; background:#000; }
+    canvas { user-select:none; -webkit-user-select:none; display:block; margin:0 auto; }
+  </style>
+</head>
+<body>
+  <py-config>
+    packages = ["pygame"]
+    fetch = ["test_game.py"]
+  </py-config>
+
+  <py-script src="test_game.py"></py-script>
+</body>
+</html>
