@@ -1,49 +1,35 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>pyscript test (repaired)</title>
+  <meta charset="UTF-8" />
+  <title>Pygame Web Test</title>
 
-  <!-- pyscript.css 제거 (외부 스타일 의존 최소화) -->
+  <!-- PyScript 로드 (정상 URL) -->
   <script defer src="https://pyscript.net/releases/2024.1.1/pyscript.js"></script>
 
   <style>
-    html, body { height:100%; margin:0; background:#000; }
-    #game-container { width:100vw; height:100vh; display:flex; align-items:center; justify-content:center; }
-
-    /* 기본적으로 py-config나 py-script 텍스트가 보이면 안 됨 -> 숨김 */
-    py-config, py-script, pyscript, pyscript-app, pyscript-debug, pre.pyscript {
-      display: none !important;
+    body {
+      margin:0;
+      background:black;
+      overflow:hidden;
     }
-
-    /* 캔버스는 반드시 보이도록 */
     canvas {
-      display: block !important;
-      user-select: none;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      image-rendering: pixelated;
-      max-width: 100%;
-      max-height: 100%;
-      margin: 0 auto;
+      display:block;
+      margin:0 auto;
     }
   </style>
 
-  <!-- 디버그: pyscript 로드 상태와 현재 스크립트 목록을 콘솔에 찍음 -->
+  <!-- 디버그: PyScript 로드 확인 -->
   <script>
     window.addEventListener("load", () => {
       setTimeout(() => {
-        console.log("[DEBUG] window.pyscript:", window.pyscript ? "present" : "NOT present");
-        const scripts = Array.from(document.scripts).map(s => ({src: s.src, type: s.type}));
-        console.log("[DEBUG] scripts on page:", scripts);
+        console.log("[DEBUG] window.pyscript:", window.pyscript ? "OK" : "FAIL");
       }, 1500);
     });
   </script>
 </head>
+
 <body>
-  <div id="game-container"></div>
 
   <py-config>
     packages = ["pygame"]
@@ -51,5 +37,6 @@
   </py-config>
 
   <py-script src="test_game.py"></py-script>
+
 </body>
 </html>
